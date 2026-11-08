@@ -1,0 +1,12 @@
+guest
+support
+developer
+kata
+operator
+backup
+service
+admin
+auditor
+analyst
+trainer
+root

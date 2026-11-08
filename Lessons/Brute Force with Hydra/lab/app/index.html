@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A deliberately vulnerable local Hydra practice lab from CyberKata.">
+  <title>Hydra Dojo // CyberKata Lab</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="lab.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#challenges">Skip to challenges</a>
+  <div class="scanline" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="CyberKata Hydra Dojo home">
+      <span class="brand-mark">CK</span>
+      <span>CYBERKATA</span>
+    </a>
+    <div class="header-meta">
+      <span class="live-dot" aria-hidden="true"></span>
+      <span>LOCAL LAB ONLINE</span>
+      <span class="divider">//</span>
+      <span id="progressHeader">0 / 4 CLEARED</span>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">BEGINNER TRAINING // AUTHORISED LOCAL TARGET</p>
+        <h1>WELCOME TO THE<br><span>HYDRA DOJO.</span></h1>
+        <p class="hero-lede">
+          Four login challenges. Four Hydra concepts. Learn how the command is
+          built, find the valid credentials, and capture every flag.
+        </p>
+
+        <div class="hero-actions">
+          <button class="button primary" type="button" data-open-level="1">Start level 01</button>
+          <a class="button secondary" href="#hydra-manual">Open field manual</a>
+        </div>
+
+        <dl class="target-strip">
+          <div>
+            <dt>YOUR TARGET</dt>
+            <dd class="target-value">127.0.0.1:8080</dd>
+          </div>
+          <div>
+            <dt>DIFFICULTY</dt>
+            <dd>BEGINNER</dd>
+          </div>
+          <div>
+            <dt>DEPENDENCIES</dt>
+            <dd>ZERO</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="hero-visual" aria-label="Kata welcomes you to the Hydra Dojo">
+        <div class="terminal-card" aria-hidden="true">
+          <div class="terminal-bar">
+            <span>HYDRA_DOJO.SYS</span>
+            <span>READY</span>
+          </div>
+          <div class="terminal-body">
+            <p><span class="cyan">$</span> target --check <span class="pink target-value">127.0.0.1:8080</span></p>
+            <p class="terminal-line delay-1">[+] training target detected</p>
+            <p class="terminal-line delay-2">[+] four challenge nodes loaded</p>
+            <p class="terminal-line delay-3"><span class="cyan">[READY]</span> waiting for operator_</p>
+          </div>
+        </div>
+        <img src="assets/kata-banner-focused.png" alt="Kata, the CyberKata host">
+        <div class="kata-callout">YOU'VE GOT THIS.</div>
+      </div>
+    </section>
+
+    <section class="briefing" aria-labelledby="briefingTitle">
+      <div class="section-index">00</div>
+      <div>
+        <p class="eyebrow">MISSION BRIEFING</p>
+        <h2 id="briefingTitle">DON'T COPY COMMANDS. <span>UNDERSTAND THEM.</span></h2>
+      </div>
+      <p>
+        Each level changes one part of the problem. Inspect the supplied intel,
+        choose the correct wordlist flags, identify the request fields, and tell
+        Hydra how to recognise failure or success.
+      </p>
+    </section>
+
+    <section class="challenges" id="challenges" aria-labelledby="challengeTitle">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">FOUR LEVELS // ONE TARGET</p>
+          <h2 id="challengeTitle">YOUR TRAINING PATH</h2>
+        </div>
+        <div class="progress-block" aria-label="Lab completion progress">
+          <span id="progressPercent">0%</span>
+          <div class="progress-track"><span id="progressBar"></span></div>
+        </div>
+      </div>
+
+      <div class="level-grid">
+        <article class="level-card" data-card-level="1">
+          <div class="level-number">01</div>
+          <div class="level-status">AVAILABLE</div>
+          <p class="level-kicker">KNOWN USER // UNKNOWN PASS</p>
+          <h3>PASSWORD<br>HUNT</h3>
+          <p>One username. One password list. Find the key that opens the first gate.</p>
+          <ul class="concept-list">
+            <li><code>-l</code> single login</li>
+            <li><code>-P</code> password list</li>
+            <li>failure marker</li>
+          </ul>
+          <button class="level-button" type="button" data-open-level="1">ENTER LEVEL <span>→</span></button>
+        </article>
+
+        <article class="level-card" data-card-level="2">
+          <div class="level-number">02</div>
+          <div class="level-status">AVAILABLE</div>
+          <p class="level-kicker">UNKNOWN USER // KNOWN PASS</p>
+          <h3>FIND THE<br>USER</h3>
+          <p>The password leaked. Now identify which account it actually belongs to.</p>
+          <ul class="concept-list">
+            <li><code>-L</code> username list</li>
+            <li><code>-p</code> single password</li>
+            <li>form fields</li>
+          </ul>
+          <button class="level-button" type="button" data-open-level="2">ENTER LEVEL <span>→</span></button>
+        </article>
+
+        <article class="level-card" data-card-level="3">
+          <div class="level-number">03</div>
+          <div class="level-status">AVAILABLE</div>
+          <p class="level-kicker">UNKNOWN USER // UNKNOWN PASS</p>
+          <h3>CREDENTIAL<br>STORM</h3>
+          <p>Combine both lists, control the task count, and stop when Hydra gets a hit.</p>
+          <ul class="concept-list">
+            <li><code>-L + -P</code> combinations</li>
+            <li><code>-t</code> task control</li>
+            <li><code>-f</code> stop on success</li>
+          </ul>
+          <button class="level-button" type="button" data-open-level="3">ENTER LEVEL <span>→</span></button>
+        </article>
+
+        <article class="level-card level-card-final" data-card-level="4">
+          <div class="level-number">04</div>
+          <div class="level-status">AVAILABLE</div>
+          <p class="level-kicker">200 FAILURE // 302 SUCCESS</p>
+          <h3>READ THE<br>RESPONSE</h3>
+          <p>The page won't tell you enough. Read the response logic and define success.</p>
+          <ul class="concept-list">
+            <li><code>F=</code> failure condition</li>
+            <li><code>S=</code> success condition</li>
+            <li>redirect detection</li>
+          </ul>
+          <button class="level-button" type="button" data-open-level="4">ENTER LEVEL <span>→</span></button>
+        </article>
+      </div>
+    </section>
+
+    <section class="command-section" id="command-anatomy" aria-labelledby="commandTitle">
+      <div class="command-copy">
+        <p class="eyebrow">COMMAND ANATOMY</p>
+        <h2 id="commandTitle">HYDRA IS A <span>QUESTION.</span></h2>
+        <p>
+          Every command answers the same questions: what credentials should be
+          tested, where should they be sent, and what response means they worked?
+        </p>
+      </div>
+
+      <div class="command-builder" aria-label="Hydra command anatomy example">
+        <div class="command-row">
+          <span class="part part-core">hydra</span>
+          <span class="part part-login">-l kata</span>
+          <span class="part part-list">-P passwords.txt</span>
+          <span class="part part-target">127.0.0.1</span>
+          <span class="part part-port">-s 8080</span>
+          <span class="part part-service">http-post-form</span>
+        </div>
+        <div class="legend-grid">
+          <div><span class="legend-line core"></span><strong>TOOL</strong><small>Launch Hydra</small></div>
+          <div><span class="legend-line login"></span><strong>LOGIN INPUT</strong><small>One value or a list</small></div>
+          <div><span class="legend-line list"></span><strong>PASSWORD INPUT</strong><small>One value or a list</small></div>
+          <div><span class="legend-line target"></span><strong>TARGET</strong><small>Your authorised host</small></div>
+          <div><span class="legend-line port"></span><strong>PORT</strong><small>The lab listens on 8080</small></div>
+          <div><span class="legend-line service"></span><strong>MODULE</strong><small>How Hydra sends attempts</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="manual-section" id="hydra-manual" aria-labelledby="manualTitle">
+      <div class="manual-intro">
+        <p class="eyebrow">HYDRA FIELD MANUAL // LOCAL LAB EDITION</p>
+        <h2 id="manualTitle">READ THE FLAGS.<br><span>BUILD THE ATTACK.</span></h2>
+        <p>
+          This is the practical version of a man page: the flags you will use most,
+          what they change, and copy-ready commands built for this lab.
+        </p>
+        <div class="manual-target">
+          <span>ACTIVE TARGET</span>
+          <strong class="target-value">127.0.0.1:8080</strong>
+        </div>
+      </div>
+
+      <div class="manual-accordion">
+        <details open>
+          <summary>
+            <span class="manual-index">01</span>
+            <span><small>INPUTS</small>CREDENTIAL FLAGS</span>
+            <span class="manual-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="manual-body">
+            <div class="flag-grid">
+              <article><code>-l kata</code><strong>ONE USERNAME</strong><p>Test one known login name.</p></article>
+              <article><code>-L users.txt</code><strong>USERNAME LIST</strong><p>Try each username from a wordlist.</p></article>
+              <article><code>-p secret</code><strong>ONE PASSWORD</strong><p>Test one known password.</p></article>
+              <article><code>-P passwords.txt</code><strong>PASSWORD LIST</strong><p>Try each password from a wordlist.</p></article>
+              <article><code>-C pairs.txt</code><strong>COMBO LIST</strong><p>Read username:password pairs from one file.</p></article>
+            </div>
+          </div>
+        </details>
+
+        <details>
+          <summary>
+            <span class="manual-index">02</span>
+            <span><small>CONTROL</small>RUN FLAGS</span>
+            <span class="manual-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="manual-body">
+            <div class="flag-grid">
+              <article><code>-s 8080</code><strong>CUSTOM PORT</strong><p>Send attempts to the lab's listening port.</p></article>
+              <article><code>-t 4</code><strong>TASK COUNT</strong><p>Run four attempts in parallel. Keep this modest in a local lab.</p></article>
+              <article><code>-f</code><strong>STOP ON SUCCESS</strong><p>Finish after the first valid credential is found.</p></article>
+              <article><code>-V</code><strong>VERBOSE ATTEMPTS</strong><p>Show every login attempt while you learn.</p></article>
+              <article><code>-I</code><strong>IGNORE RESTORE</strong><p>Start clean instead of resuming an old Hydra session.</p></article>
+            </div>
+          </div>
+        </details>
+
+        <details>
+          <summary>
+            <span class="manual-index">03</span>
+            <span><small>MODULE</small>HTTP FORM GRAMMAR</span>
+            <span class="manual-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="manual-body grammar-layout">
+            <div class="grammar-line">
+              <code>/api/login/1:username=^USER^&amp;password=^PASS^:F=ACCESS_DENIED</code>
+            </div>
+            <div class="grammar-grid">
+              <article><code>^USER^</code><p>Hydra replaces this with each username.</p></article>
+              <article><code>^PASS^</code><p>Hydra replaces this with each password.</p></article>
+              <article><code>F=TEXT</code><p>The response text that proves an attempt failed.</p></article>
+              <article><code>S=TEXT</code><p>The response text that proves an attempt succeeded.</p></article>
+            </div>
+            <p class="manual-note"><strong>RULE:</strong> define either a reliable failure marker or a reliable success marker. Hydra needs one clear signal to separate misses from hits.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>
+            <span class="manual-index">04</span>
+            <span><small>LAB RECIPES</small>COPY-READY COMMANDS</span>
+            <span class="manual-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="manual-body command-recipes">
+            <article class="recipe-card">
+              <div><span>LEVEL 01</span><strong>PASSWORD HUNT</strong><p>One known username against a password list.</p></div>
+              <pre><code data-command-template="hydra -l kata -P wordlists/passwords.txt {HOST} -s {PORT} http-post-form &quot;/api/login/1:username=^USER^&amp;password=^PASS^:F=ACCESS_DENIED&quot; -t 4 -f -V"></code></pre>
+              <button type="button" data-copy-command>COPY</button>
+            </article>
+
+            <article class="recipe-card">
+              <div><span>LEVEL 02</span><strong>FIND THE USER</strong><p>A username list against one known password.</p></div>
+              <pre><code data-command-template="hydra -L wordlists/usernames.txt -p dojo-pass {HOST} -s {PORT} http-post-form &quot;/api/login/2:username=^USER^&amp;password=^PASS^:F=UNKNOWN_OPERATOR&quot; -t 4 -f -V"></code></pre>
+              <button type="button" data-copy-command>COPY</button>
+            </article>
+
+            <article class="recipe-card">
+              <div><span>LEVEL 03</span><strong>CREDENTIAL STORM</strong><p>Combine both lists and stop after a valid pair.</p></div>
+              <pre><code data-command-template="hydra -L wordlists/usernames.txt -P wordlists/passwords.txt {HOST} -s {PORT} http-post-form &quot;/api/login/3:username=^USER^&amp;password=^PASS^:F=INVALID_CREDENTIAL_PAIR&quot; -t 4 -f -V"></code></pre>
+              <button type="button" data-copy-command>COPY</button>
+            </article>
+
+            <article class="recipe-card">
+              <div><span>LEVEL 04</span><strong>READ THE RESPONSE</strong><p>Use the unique success marker returned after the redirect.</p></div>
+              <pre><code data-command-template="hydra -L wordlists/usernames.txt -P wordlists/passwords.txt {HOST} -s {PORT} http-post-form &quot;/api/login/4:username=^USER^&amp;password=^PASS^:S=HYDRA_DOJO_COMPLETE&quot; -t 4 -f -V"></code></pre>
+              <button type="button" data-copy-command>COPY</button>
+            </article>
+
+            <article class="recipe-card">
+              <div><span>BONUS</span><strong>COMBO MODE</strong><p>Use pre-paired username:password entries with <code>-C</code>.</p></div>
+              <pre><code data-command-template="hydra -C wordlists/credential-pairs.txt {HOST} -s {PORT} http-post-form &quot;/api/login/3:username=^USER^&amp;password=^PASS^:F=INVALID_CREDENTIAL_PAIR&quot; -t 4 -f -V"></code></pre>
+              <button type="button" data-copy-command>COPY</button>
+            </article>
+
+            <p class="manual-note"><strong>TIP:</strong> keep <code>-V</code> while learning so you can see each attempt. Remove it later when you only need the final result.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <aside class="scope-notice">
+      <span class="scope-icon">!</span>
+      <div>
+        <strong>KEEP IT LEGAL.</strong>
+        <p>This intentionally vulnerable lab is for your own local machine. Never test credentials against systems you do not own or have explicit permission to assess.</p>
+      </div>
+    </aside>
+  </main>
+
+  <footer>
+    <span>CYBERKATA // HYDRA DOJO v1.0</span>
+    <span>LOCAL TRAINING ENVIRONMENT</span>
+  </footer>
+
+  <dialog id="levelDialog" aria-labelledby="dialogTitle">
+    <div class="dialog-shell">
+      <header class="dialog-header">
+        <div>
+          <p class="eyebrow" id="dialogEyebrow">LEVEL 01 // TRAINING NODE</p>
+          <h2 id="dialogTitle">PASSWORD HUNT</h2>
+        </div>
+        <button class="dialog-close" id="dialogClose" type="button" aria-label="Close level">×</button>
+      </header>
+
+      <div class="dialog-grid">
+        <section class="mission-panel">
+          <span class="panel-label">MISSION</span>
+          <p id="missionText"></p>
+
+          <div class="intel-grid" id="intelGrid"></div>
+
+          <div class="endpoint-block">
+            <span>POST ENDPOINT</span>
+            <code id="endpointText"></code>
+            <button id="copyEndpoint" type="button">COPY</button>
+          </div>
+
+          <div class="hint-stack">
+            <span class="panel-label">PROGRESSIVE HINTS</span>
+            <details><summary>Hint 01</summary><p id="hint1"></p></details>
+            <details><summary>Hint 02</summary><p id="hint2"></p></details>
+            <details><summary>Hint 03</summary><p id="hint3"></p></details>
+          </div>
+        </section>
+
+        <section class="login-panel">
+          <div class="login-window">
+            <div class="login-window-bar">
+              <span>SECURE_GATEWAY.EXE</span>
+              <span id="levelBadge">NODE_01</span>
+            </div>
+            <div class="login-window-body">
+              <div class="lock-glyph" aria-hidden="true">⌁</div>
+              <h3>AUTHENTICATION REQUIRED</h3>
+              <p>Manual testing console</p>
+
+              <form id="manualLoginForm">
+                <label for="usernameInput">USERNAME</label>
+                <input id="usernameInput" name="username" autocomplete="off" required>
+                <label for="passwordInput">PASSWORD</label>
+                <input id="passwordInput" name="password" type="password" autocomplete="off" required>
+                <button class="button primary full" type="submit">ATTEMPT LOGIN</button>
+              </form>
+
+              <pre id="responseConsole" aria-live="polite">&gt; waiting for credentials_</pre>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="dialog-footer">
+        <span>WORDLISTS: <code id="wordlistText"></code></span>
+        <span>FORM FIELDS: <code>username</code> + <code>password</code></span>
+      </div>
+    </div>
+  </dialog>
+</body>
+</html>
